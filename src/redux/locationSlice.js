@@ -1,6 +1,5 @@
 // redux/locationSlice.js
 
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const locationSlice = createSlice({
@@ -8,7 +7,7 @@ const locationSlice = createSlice({
   initialState: {
     selectedCity: '',
     selectedArea: '',
-
+    selectedGame: '', // Add this line
   },
   reducers: {
     setSelectedCity: (state, action) => {
@@ -17,9 +16,11 @@ const locationSlice = createSlice({
     setSelectedArea: (state, action) => {
       state.selectedArea = action.payload;
     },
-    
+    setSelectedGame: (state, action) => { // Add this reducer
+      state.selectedGame = action.payload;
+    },
   },
 });
 
-export const { setSelectedCity, setSelectedArea } = locationSlice.actions;
+export const { setSelectedCity, setSelectedArea, setSelectedGame } = locationSlice.actions;
 export default locationSlice.reducer;

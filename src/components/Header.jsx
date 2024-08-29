@@ -174,7 +174,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg d-block">
         <div className="container">
           <a className="navbar-brand" href="/">
-            <img src={logo} className="" style={{width:'84px'}}/>
+            <img src={logo} className="" style={{width:'52px'}}/>
           </a>
           <a href="/login" className="btn custom-btn d-lg-none ms-auto me-4">
             Login
@@ -199,12 +199,12 @@ function Header() {
               </li>
               <li className="nav-item">
                 <a className="nav-link click-scroll" href="#section_2">
-                  Academies
+                   Game
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link click-scroll" href="#section_3">
-                  About
+                Academies
                 </a>
               </li>
               <li className="nav-item">

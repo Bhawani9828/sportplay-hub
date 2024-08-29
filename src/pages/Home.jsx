@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import feature from "../assets/Featured-1.jpg";
-import feature2 from "../assets/Featured-2.jpg";
-import feature3 from "../assets/Featured-3.jpg";
 import Slider from "../components/Slider";
 import { useEffect, useState } from "react";
 import { TbHandClick } from "react-icons/tb";
@@ -9,6 +7,8 @@ import axios from "axios";
 import moment from "moment";
 import FeaturedAcademies from "../components/FeaturedAcademies";
 import News from "../components/News";
+import GameCard from "../components/GameCard";
+import { ToastContainer } from 'react-toastify';
 function Home() {
   const [events, setEvents] = useState([]);
   const [selectedEventType, setSelectedEventType] = useState("district");
@@ -46,6 +46,7 @@ function Home() {
   };
   return (
     <>
+     <ToastContainer />
       <section className="hero-section" id="section_1">
         <div className="section-overlay" />
         <div className="container d-flex justify-content-center align-items-center">
@@ -103,12 +104,15 @@ function Home() {
         </div>
       </section>
 
+      <GameCard/>
 
     
           <Slider />
     
 
-      <section className="about-section section-padding" id="section_3">
+         
+
+      {/* <section className="about-section section-padding" id="section_3">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
@@ -151,9 +155,11 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <FeaturedAcademies />
+
+      
 
       
 
@@ -252,12 +258,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -275,12 +283,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -298,12 +308,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-orange">
+                                <h6 className="">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -321,12 +333,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -344,12 +358,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -367,12 +383,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="text-white">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>
@@ -390,12 +408,14 @@ function Home() {
                                   backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
+                                  position:'relative'
                                 }}
                               >
+                                <div className="overlay-5"></div>
                                 <h3>{event.eventCities.join(", ")}</h3>
-                                <h5 className="text-white">
+                                <h6 className="text-white">
                                   {event.eventName}
-                                </h5>
+                                </h6>
                                 <p className="mb-2">{event.eventTime}</p>
                                 <p>{event.eventSport}</p>
                                 <p>{event.eventType}</p>

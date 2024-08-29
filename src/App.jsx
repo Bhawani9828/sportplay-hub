@@ -12,15 +12,22 @@ import store from './redux/store';
 import Academydetail from './pages/Academydetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { pathname } = useLocation();
   const isLoginPage = pathname === '/login';
   const isRegisterPage = pathname === '/register';
-
+ 
   return (
+    <>
+      <ToastContainer />
+ 
     <Provider store={store}>
+  
       {!isLoginPage && !isRegisterPage && <Header />}
+     
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ticket" element={<Ticket />} />
@@ -30,7 +37,9 @@ function App() {
       </Routes>
       {!isLoginPage && !isRegisterPage && <Footer sectionId="section_5" />}
     </Provider>
+    </>
   );
+  
 }
 
 export default App;
