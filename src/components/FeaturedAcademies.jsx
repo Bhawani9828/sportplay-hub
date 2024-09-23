@@ -11,7 +11,7 @@ const FeaturedAcademies = () => {
   useEffect(() => {
     if (selectedCity) {
       axios
-        .get(`http://192.168.1.9:7000/api/academies/${selectedCity}`)
+        .get(`https://vclottery.in/sportshub/api/academies/${selectedCity}`)
         .then((response) => {
           if (response.data && response.data.success) {
             setAcademies(response.data.academies);
@@ -29,6 +29,10 @@ const FeaturedAcademies = () => {
     navigate(`/academy/${id}`);
   };
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <section className="artists-section section-padding" id="section_4">
       <div className="container">
@@ -42,19 +46,19 @@ const FeaturedAcademies = () => {
                 <div className="artists-image-wrap">
                   <img
                     className="img-fluid w-100"
-                    src={`http://192.168.1.9:7000${academy.photos[1]}`}
+                    src={`https://vclottery.in/sportshub${academy.photos[2]}`}
                     alt={`${academy.academyName}-photo`}
                   />
                 </div>
                 <div className="artists-hover text-start pe-0">
                   <p>
-                    <strong>Academy Name:</strong> {academy.academyName}
+                    <strong>Academy Name:</strong> {capitalizeFirstLetter(academy.academyName)}
                   </p>
                   <p>
-                    <strong>Coach Name:</strong> {academy.coachName}
+                    <strong>Coach Name:</strong> {capitalizeFirstLetter(academy.coachName)}
                   </p>
                   <p>
-                    <strong>All Game:</strong> {academy.sports.join(', ')}
+                    <strong>All Game:</strong> {capitalizeFirstLetter(academy.sports.join(', '))}
                   </p>
                   <hr />
                   <p className="mb-0">

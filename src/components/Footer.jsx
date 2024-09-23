@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Footer() {
@@ -13,19 +14,19 @@ export default function Footer() {
         <div className="col-lg-6 col-12 d-flex justify-content-lg-end align-items-center">
           <ul className="social-icon d-flex justify-content-lg-end">
             <li className="social-icon-item">
-              <a href="#" className="social-icon-link">
-                <span className="bi-twitter" />
-              </a>
+            <Link target="_blank" to="https://www.linkedin.com/company/85666328/admin/dashboard/" className="social-icon-link">
+                <span className="bi-linkedin" />
+              </Link>
             </li>
             <li className="social-icon-item">
-              <a href="#" className="social-icon-link">
-                <span className="bi-apple" />
-              </a>
+            <Link target="_blank" to="https://www.facebook.com/people/Blockverse-Infotech-Solutions/100087563513249/" className="social-icon-link">
+                <span className="bi-facebook" />
+              </Link>
             </li>
             <li className="social-icon-item">
-              <a href="#" className="social-icon-link">
+            <Link target="_blank" to="https://www.instagram.com/blockverseinfotech/?igsh=YXpldTV4Y2l1MzBo" className="social-icon-link">
                 <span className="bi-instagram" />
-              </a>
+              </Link>
             </li>
             <li className="social-icon-item">
               <a href="#" className="social-icon-link">
@@ -48,33 +49,33 @@ export default function Footer() {
         <h5 className="site-footer-title mb-3">Links</h5>
         <ul className="site-footer-links">
           <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
+            <a href="#section_1" className="site-footer-link">
               Home
             </a>
           </li>
           <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
-              About
+            <a href="#section_2" className="site-footer-link">
+              Game
             </a>
           </li>
           <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
+            <a href="#section_3" className="site-footer-link">
+              Academies
+            </a>
+          </li>
+          <li className="site-footer-link-item">
+            <a href="#section_4" className="site-footer-link">
               Feature
             </a>
           </li>
           <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
-              Schedule
+            <a href="#section_5" className="site-footer-link">
+              Event
             </a>
           </li>
           <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
-              Pricing
-            </a>
-          </li>
-          <li className="site-footer-link-item">
-            <a href="#" className="site-footer-link">
-              Contact
+            <a href="#section_6" className="site-footer-link">
+              Latest News
             </a>
           </li>
         </ul>
@@ -83,7 +84,7 @@ export default function Footer() {
         <h5 className="site-footer-title mb-3">Have a question?</h5>
         <p className="text-white d-flex mb-1 justify-content-center">
           <a href="tel: 090-080-0760" className="site-footer-link">
-            090-080-0760
+            07947431585
           </a>
         </p>
         <p className="text-white d-flex justify-content-center">
@@ -95,7 +96,7 @@ export default function Footer() {
       <div className="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
         <h5 className="site-footer-title mb-3">Location</h5>
         <p className="text-white d-flex mt-3 mb-2">
-          Silang Junction South, Tagaytay, Cavite, India
+        Centre Point Tower, 2nd Floor, Center Point Tower, Ajmer Road, Jaipur, Vaishali Nagar, Jaipur - 302021 (RJ 14)
         </p>
         <a className="link-fx-1 color-contrast-higher mt-3" href="#">
           <span>Our Maps</span>

@@ -9,6 +9,7 @@ import FeaturedAcademies from "../components/FeaturedAcademies";
 import News from "../components/News";
 import GameCard from "../components/GameCard";
 import { ToastContainer } from 'react-toastify';
+import Counter from "../components/Counter";
 function Home() {
   const [events, setEvents] = useState([]);
   const [selectedEventType, setSelectedEventType] = useState("district");
@@ -18,7 +19,7 @@ function Home() {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.1.9:7000/api/all-events/district"
+          "https://vclottery.in/sportshub/api/all-events/district"
         );
         console.log(response.data); // Log the response to check the structure
         setEvents(response.data.events); // Access the 'events' array from the response
@@ -31,8 +32,12 @@ function Home() {
   }, []);
 
   const filteredEvents = Array.isArray(events)
-    ? events.filter((event) => event.eventType === selectedEventType)
-    : [];
+  ? events.filter((event) => {
+      const eventDate = moment(event.eventDate, "DD-MM-YYYY");
+      const currentDate = moment(); 
+      return event.eventType === selectedEventType && eventDate.isSameOrAfter(currentDate);
+    })
+  : [];
 
   const options = [
     { value: "district", label: "district" },
@@ -40,6 +45,9 @@ function Home() {
     { value: "national", label: "national" },
   ];
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
   const handleOptionClick = (value) => {
     setSelectedEventType(value);
     setIsOpen(false);
@@ -54,7 +62,8 @@ function Home() {
             <div className="col-12 mt-auto mb-5 text-center">
               <small className="text-white">Top Sports Training</small>
               <h1 className="text-white mb-5">
-                Find Top Sports Training Near You!
+                {/* Find Top Sports Training Near You! */}
+                Search Coach, Academy, Player In your area...
               </h1>
               {/* <Link className="btn custom-btn smoothscroll" href="#section_2">
                 Lets begin
@@ -77,17 +86,17 @@ function Home() {
                 <ul className="social-icon d-flex align-items-center justify-content-center">
                   <span className="text-white me-3">Share:</span>
                   <li className="social-icon-item">
-                    <Link to="/" className="social-icon-link">
+                    <Link target="_blank" to="https://www.facebook.com/people/Blockverse-Infotech-Solutions/100087563513249/" className="social-icon-link">
                       <span className="bi-facebook" />
                     </Link>
                   </li>
                   <li className="social-icon-item">
-                    <Link to="/" className="social-icon-link">
-                      <span className="bi-twitter" />
+                    <Link target="_blank" to="https://www.linkedin.com/company/85666328/admin/dashboard/" className="social-icon-link">
+                      <span className="bi-linkedin" />
                     </Link>
                   </li>
                   <li className="social-icon-item">
-                    <Link to="/" className="social-icon-link">
+                    <Link target="_blank" to="https://www.instagram.com/blockverseinfotech/?igsh=YXpldTV4Y2l1MzBo" className="social-icon-link">
                       <span className="bi-instagram" />
                     </Link>
                   </li>
@@ -103,6 +112,8 @@ function Home() {
           </video>
         </div>
       </section>
+
+      <Counter/>
 
       <GameCard/>
 
@@ -190,7 +201,7 @@ function Home() {
                       alignItems: "center",
                     }}
                   >
-                    {selectedEventType}{" "}
+                    {capitalizeFirstLetter(selectedEventType)}
                     <TbHandClick className="text-orange" fontSize={22} />
                   </div>
                   {isOpen && (
@@ -217,7 +228,7 @@ function Home() {
                             alignItems: "center",
                           }}
                         >
-                          {option.label}
+                          {capitalizeFirstLetter(option.label)}
                           <TbHandClick />
                         </div>
                       ))}
@@ -255,14 +266,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="">
                                   {event.eventName}
                                 </h6>
@@ -280,14 +291,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="">
                                   {event.eventName}
                                 </h6>
@@ -305,14 +316,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="">
                                   {event.eventName}
                                 </h6>
@@ -330,14 +341,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="">
                                   {event.eventName}
                                 </h6>
@@ -355,14 +366,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="">
                                   {event.eventName}
                                 </h6>
@@ -380,14 +391,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="text-white">
                                   {event.eventName}
                                 </h6>
@@ -405,14 +416,14 @@ function Home() {
                               <td
                                 className="table-background-image-wrap"
                                 style={{
-                                  backgroundImage: `url(http://192.168.1.9:7000${event.photo})`,
+                                  backgroundImage: `url(https://vclottery.in/sportshub${event.photo})`,
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
                                   position:'relative'
                                 }}
                               >
                                 <div className="overlay-5"></div>
-                                <h3>{event.eventCities.join(", ")}</h3>
+                                <h3>{capitalizeFirstLetter(event.eventCities.join(", "))}</h3>
                                 <h6 className="text-white">
                                   {event.eventName}
                                 </h6>

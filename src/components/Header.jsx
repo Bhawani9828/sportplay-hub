@@ -5,17 +5,18 @@ import { FaSearchLocation } from "react-icons/fa";
 import Typed from "typed.js";
 import { setSelectedCity } from "../redux/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Bhilwara from "../assets/Bhilwara.png";
-import jaipur from "../assets/jaipur.png";
-import Tonk from "../assets/Tonk.png";
-import Ajmer from "../assets/Ajmer.png";
-import Hanumangarh from "../assets/Hanumangarh.png";
-import Rajsamand from "../assets/Rajsamand.png";
-import Sambhar from "../assets/Sambhar.png";
-import Udaipur from "../assets/Udaipur.png";
-import Vijayanagar from "../assets/Vijayanagar.png";
-import Sodala from "../assets/Sodala.png";
+import Bhilwara from "../assets/cityimg/Bhilwara.png";
+import jaipur from "../assets/cityimg/jaipur.png";
+import Tonk from "../assets/cityimg/Tonk.png";
+import Ajmer from "../assets/cityimg/Ajmer.png";
+import Hanumangarh from "../assets/cityimg/Hanumangarh.png";
+import Rajsamand from "../assets/cityimg/Rajsamand.png";
+import Sambhar from "../assets/cityimg/Sambhar.png";
+import Udaipur from "../assets/cityimg/Udaipur.png";
+import Kota from "../assets/cityimg/bansur.png";
+import Sodala from "../assets/cityimg/Sodala.png";
 import logo from "../assets/newlogo.png";
+import { LuMousePointerClick } from "react-icons/lu";
 
 function Header() {
   const [areas, setAreas] = useState([]);
@@ -57,7 +58,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.9:7000/api/areas")
+      .get("https://vclottery.in/sportshub/api/areas")
       .then((response) => {
         if (response.data && response.data.success) {
           setAreas(response.data.areas);
@@ -86,42 +87,21 @@ function Header() {
     dispatch(setSelectedCity(area));
   };
 
-  // const handleDetectLocation = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         const { latitude, longitude } = position.coords;
-  //         axios
-  //           .get(
-  //             `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-  //           )
-  //           .then((response) => {
-  //             if (response.data && response.data.city) {
-  //               const detectedCity = response.data.city.toLowerCase();
-  //               setLocalSelectedArea(detectedCity);
-  //               dispatch(setSelectedCity(detectedCity));
-  //             } else {
-  //               console.error("Unable to detect city:", response);
-  //             }
-  //           })
-  //           .catch((error) => {
-  //             console.error(
-  //               "Error fetching data from reverse geocoding API:",
-  //               error
-  //             );
-  //           });
-  //       },
-  //       (error) => {
-  //         console.error("Geolocation error:", error);
-  //         alert(
-  //           "Unable to detect your location. Please enable location services and try again."
-  //         );
-  //       }
-  //     );
-  //   } else {
-  //     alert("Geolocation is not supported by this browser.");
-  //   }
-  // };
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  useEffect(() => {
+    const modalTimeout = setTimeout(() => {
+      const modalElement = document.getElementById("searchModal");
+      if (modalElement) {
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+      }
+    }, 5000); // Open modal after 5 seconds
+
+    return () => clearTimeout(modalTimeout); // Clear timeout if component unmounts
+  }, []);
 
   const handleCityClick = (city) => {
     setLocalSelectedArea(city);
@@ -137,6 +117,8 @@ function Header() {
     }
   };
 
+
+
   const toggleShowAllCities = () => {
     setShowAllCities(!showAllCities);
   };
@@ -150,9 +132,21 @@ function Header() {
     rajsamand: Rajsamand,
     sambhar: Sambhar,
     udaipur: Udaipur,
-    bansur: Vijayanagar,
+    kota: Kota,
     jaipurr: Sodala,
   };
+
+
+    // Function to handle icon click
+    const handleIconClick = () => {
+      const selectElement = document.getElementById("area-select");
+      if (selectElement) {
+        selectElement.focus();
+        // Attempt to open the dropdown
+        // Note: Some browsers may not allow programmatic opening of select dropdowns
+        // As an alternative, you can use a custom dropdown component for better control
+      }
+    };
 
   return (
     <>
@@ -174,7 +168,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg d-block">
         <div className="container">
           <a className="navbar-brand" href="/">
-            <img src={logo} className="" style={{width:'52px'}}/>
+            <img src={logo} className="" style={{ width: "52px" }} />
           </a>
           <a href="/login" className="btn custom-btn d-lg-none ms-auto me-4">
             Login
@@ -199,12 +193,12 @@ function Header() {
               </li>
               <li className="nav-item">
                 <a className="nav-link click-scroll" href="#section_2">
-                   Game
+                  Game
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link click-scroll" href="#section_3">
-                Academies
+                  Academies
                 </a>
               </li>
               <li className="nav-item">
@@ -220,11 +214,9 @@ function Header() {
 
               <li className="nav-item">
                 <a className="nav-link click-scroll" href="#section_6">
-                Latest News
+                  Latest News
                 </a>
               </li>
-            
-            
             </ul>
             <button
               className="btn btn-primary btn-md-square border-0 rounded-circle mb-3 mb-md-3 mb-lg-0 me-3"
@@ -234,10 +226,16 @@ function Header() {
               <FaSearchLocation />
             </button>
 
-            <a href="http://localhost:3005/" className="btn custom-btn d-lg-block d-none me-3">
+            <a
+              href="http://localhost:5174/"
+              className="btn custom-btn d-lg-block d-none me-3"
+            >
               Login
             </a>
-            <a href="http://localhost:3005/register" className="btn custom-btn d-lg-block d-none">
+            <a
+              href="http://localhost:5174/register"
+              className="btn custom-btn d-lg-block d-none"
+            >
               Register
             </a>
           </div>
@@ -256,15 +254,7 @@ function Header() {
         <div className="modal-dialog modal-xl">
           <div
             className="modal-content image-border rounded-0 "
-            style={{
-              background: "#fffaf8",
-              borderColor: "#ee5007,",
-              borderWidth: "4px",
-              borderStyle: "double",
-              borderImageSlice: "1",
-              borderImageSource:
-                "linear-gradient(to bottom, #006666, #ee5007 50%, #006666 50%, #ee5007 100%)",
-            }}
+           
           >
             <div className="modal-header">
               <h4
@@ -281,56 +271,65 @@ function Header() {
               />
             </div>
             <div className="modal-body ">
-              <div className="input-group  mx-auto d-flex">
+            <div className="input-group mx-auto d-flex" >
+            <div className="d-flex align-items-center" style={{ position: "relative", width: "100%" }}>
                 <select
                   className="form-select p-2"
                   value={localSelectedArea}
                   onChange={handleAreaChange}
-                  style={{ background: "#edac8e30", borderColor: "#ee5007" }}
+                  style={{
+                    background: "#edac8e30",
+                    borderColor: "#ee5007",
+                    width: "100%",
+                    paddingRight: "40px"  // Add padding to the right to make space for the icon
+                  }}
                 >
                   <option value="" disabled>
                     Select Area
                   </option>
                   {areas.length > 0 ? (
                     areas.map((area, index) => (
-                      <option key={index} value={area}>
-                        {area}
-                      </option>
+                      <option   key={index} value={area}>
+                {capitalizeFirstLetter(area)}
+              </option>
                     ))
                   ) : (
                     <option disabled>Loading areas...</option>
                   )}
                 </select>
-                <span
-                  id="search-icon-1"
-                  className="input-group-text p-3"
-                  style={{ background: "#edac8e30", borderColor: "#ee5007" }}
-                >
-                  <FaSearchLocation style={{ color: "#ee5007" }} />
-                </span>
+                <LuMousePointerClick
+      style={{
+        color: "#ee5007",
+        position: "absolute",
+        right: "10px", // Position the icon inside the select box on the right side
+        pointerEvents: "none" // Make sure the icon does not interfere with the dropdown interaction
+      }}
+    />
+                </div>
+     
               </div>
 
               <div className="bwc__sc-ttnkwg-33 kCsyEE mt-3">
-              <ul className="bwc__sc-ttnkwg-15 gZrltM">
-  {areas.map((city, index) => (
-    <li
-      key={index}
-      className="bwc__sc-ttnkwg-18 KUowN"
-      onClick={() => handleCityClick(city.toLowerCase())}
-    >
-      <div className="bwc__sc-ttnkwg-19 hkqhSR">
-        <div className="bwc__sc-ttnkwg-17 gvzyfS">
-          <img
-            src={cityImageMap[city.toLowerCase()]}
-            alt={city}
-            className="bwc__sc-ttnkwg-26 izPSOY"
-          />
-        </div>
-        <span className="bwc__sc-ttnkwg-16 dizuyr">{city}</span>
-      </div>
-    </li>
-  ))}
-</ul>
+                <ul className="bwc__sc-ttnkwg-15 gZrltM">
+                  {areas.map((city, index) => (
+                    <li
+                      key={index}
+                      className="bwc__sc-ttnkwg-18 KUowN"
+                      onClick={() => handleCityClick(city.toLowerCase())}
+                    >
+                      <div className="bwc__sc-ttnkwg-19 hkqhSR">
+                        <div className="bwc__sc-ttnkwg-17 gvzyfS">
+                          <img
+                            src={cityImageMap[city.toLowerCase()]}
+                            alt={city}
+                            className="bwc__sc-ttnkwg-26 izPSOY"
+                          />
+                        </div>
+                        <span className="bwc__sc-ttnkwg-16 dizuyr">{capitalizeFirstLetter(city)}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
 
                 <div
                   className="bwc__sc-ttnkwg-4 Ettpg mt-3"
@@ -351,7 +350,7 @@ function Header() {
                           className="bwc__sc-ttnkwg-8 fsJkBY"
                           onClick={() => handleCityClick(area.toLowerCase())}
                         >
-                          {area}
+                       {capitalizeFirstLetter(area)}
                         </div>
                       </li>
                     ))}

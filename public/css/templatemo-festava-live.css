@@ -1232,8 +1232,7 @@ button {
 .properties .item {
   background-color: #fafafa;
   border-radius: 10px;
-  padding: 30px;
-  margin-bottom: 30px;
+ 
 }
 .properties .item img {
   border-radius: 10px;
@@ -1251,27 +1250,30 @@ button {
     align-items: center;
 }
 .properties .item h6 {
-  font-size: 20px;
+  
   color: #f35525;
   margin-top: 6px;
   display: inline-block;
 
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .properties .item h4 {
   font-size: 19px;
   margin: 25px 0px;
 }
-.properties .item ul {
+/* .properties .item ul {
   border-bottom: 1px solid #eaeaea;
   margin-bottom: 30px;
   padding-bottom: 30px;
-}
+} */
 .properties .item ul li {
   display: inline-block;
   font-size: 15px;
-  color: #4a4a4a;
+  color: #ffffff;
   margin-right: 20px;
+}
+.properties .item ul li:last-child {
+  margin-right: 0; /* Remove margin for the last item */
 }
 .properties .item .main-button {
   text-align: center;
@@ -1297,11 +1299,10 @@ button {
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 30px 30px 30px 30px ;
   overflow: hidden;
 }
 
-.project-item::before {
+/* .project-item::before {
   content: "";
   width: 100%;
   height: 40%;
@@ -1344,7 +1345,7 @@ button {
   right: -18%;
   rotate: -30deg;
   z-index: 2;
-}
+} */
 
 .project-item img {
   position: relative;
@@ -1376,7 +1377,7 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  background: var(--bs-primary);
+  background: #fff;
   color: var(--bs-dark) !important;
   opacity: 1;
 
@@ -1395,6 +1396,157 @@ button {
   height: 100%;
   background-color: #00000091;
 }
+.form-select:focus {
+
+  outline: 0;
+  box-shadow: none
+}
+
+.counter-section .counter {
+  margin: 0 auto;
+  padding: 15px;
+  width: 180px;
+  height: 180px;
+  border-radius: 15px;
+  transition: all .4s ease-in-out;
+  cursor: pointer;
+}
+
+.counter-section .counter h4 {
+  font-size: 30px;
+  font-weight: 800;
+  color: #1E212F;
+  transition: all .4s ease-in-out;
+}
+
+.counter-section .counter:hover,
+.item:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0px 10px 50px 0px #F6E1DEB2;
+  transition: all .4s ease-in-out;
+}
+
+.counter-section .counter:hover h4 {
+  color: #ee5007;
+  transition: all .4s ease-in-out;
+}
+
+.verify_flex {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.verified_tick, .coach_sport {
+  background-color: #077838;
+  color: #fff;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 0.3125rem;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.75rem;
+}
+.coach_sport {
+  background-color: #fe5c4d;
+}
+.verified_tick img {
+  width: 0.9rem;
+  height: auto;
+}
+
+.fb_flex_version {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.graph_flex {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.3rem;
+  overflow: hidden;
+}
+.graph_view {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rating_num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #077838;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.3125rem;
+  color: #fff;
+  font-family: DM Sans;
+  font-size: 0.675rem;
+  width: 2.5rem;
+}
+.line {
+  color: #dcdcdc;
+}
+
+.price_month {
+  font-weight: 600;
+  color: #222;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.coach_academy {
+  padding: 0.2rem 0.5rem;
+  background-color: #f8cb2e;
+  color: #fff;
+  border-radius: 0.3125rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+
+.extra_info {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.8rem;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 2rem;
+  overflow: auto;
+}
+
+.extra_sport {
+  background-color: #f5ebeb;
+  color: #626060;
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.3125rem;
+  width: auto;
+  font-size: 0.7rem;
+}
+
+.list_location {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.05rem;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
 
 /*---------------------------------------
   RESPONSIVE STYLES               
@@ -1476,6 +1628,7 @@ button {
     font-size: 14px;
     padding: 10px 20px;
   }
+
 }
 
 @media screen and (max-width: 480px) {

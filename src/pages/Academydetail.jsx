@@ -20,7 +20,7 @@ function AcademyDetail() {
     setIsLoggedIn(!!token);
 
     // Fetch academy details
-    axios.get(`http://192.168.1.9:7000/api/details/${id}`)
+    axios.get(`https://vclottery.in/sportshub/api/details/${id}`)
       .then(response => {
         if (response.data && response.data.details) {
           setAcademy(response.data.details);
@@ -36,7 +36,7 @@ function AcademyDetail() {
       });
 
     // Fetch related academies
-    axios.get(`http://192.168.1.9:7000/api/related-academies/${id}`)
+    axios.get(`https://vclottery.in/sportshub/api/related-academies/${id}`)
       .then(response => {
         if (response.data && response.data.relatedAcademies) {
           setRelatedAcademies(response.data.relatedAcademies);
@@ -52,7 +52,7 @@ function AcademyDetail() {
   const handleRegister = () => {
     console.log('handleRegister called, isLoggedIn:', isLoggedIn);
     if (isLoggedIn) {
-      axios.post(`http://192.168.1.9:7000/api/register/${id}`, studentDetails)
+      axios.post(`https://vclottery.in/sportshub/api/register/${id}`, studentDetails)
         .then(response => {
           if (response.data && response.data.success) {
             alert('Registration successful!');
@@ -80,7 +80,7 @@ function AcademyDetail() {
   };
 
   const handleModalSubmit = () => {
-    axios.post(`http://192.168.1.9:7000/api/register/${id}`, studentDetails)
+    axios.post(`https://vclottery.in/sportshub/api/register/${id}`, studentDetails)
       .then(response => {
         if (response.data && response.data.success) {
           alert('Registration successful!');
@@ -121,7 +121,7 @@ function AcademyDetail() {
                       {academy.photos.map((photo, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
                           <img
-                            src={`http://192.168.1.9:7000${photo}`}
+                            src={`https://vclottery.in/sportshub${photo}`}
                             className="d-block w-100"
                             alt={`Slide ${index + 1}`}
                           />
@@ -149,7 +149,7 @@ function AcademyDetail() {
                           style={{ width: '100px' }}
                         >
                           <img
-                            src={`http://192.168.1.9:7000${photo}`}
+                            src={`https://vclottery.in/sportshub${photo}`}
                             className="d-block w-100 shadow-1-strong rounded"
                             alt={`Thumbnail ${index + 1}`}
                           />
@@ -365,7 +365,7 @@ function AcademyDetail() {
                     <div className="product__item">
                       <div
                         className="product__item__pic set-bg"
-                        style={{ backgroundImage: `url(http://192.168.1.9:7000${relatedAcademy.photo})` }}
+                        style={{ backgroundImage: `url(https://vclottery.in/sportshub${relatedAcademy.photo})` }}
                       >
                         <ul className="product__hover">
                           <li>
